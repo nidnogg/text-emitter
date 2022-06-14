@@ -15,10 +15,23 @@ public class TextEmitter {
         String token = System.getenv("SLACK_TOKEN");
         System.out.println("current token " + token);
 
+        int id = 122928933;
+        String contestant = "Company Inc.";
+        String cnpjContestant = "11.111.111/0001-11";
+        String contestee = "Bad Company Inc.";
+        String cnpjContestee = "11.111.111/0001-12";
+
+
         try {
+            String payload = String.format(":exclamation: A CERC foi solicitada para realizar mediação " +
+                    "na seguinte contestação:\n" +
+                    "Contestacão *%s*.\n" +
+                    "Contestante *%s* CNPJ *%s*\n" +
+                    "Contestado *%s* CNPJ *%s*\n", Integer.toString(id), contestant, cnpjContestant,
+                    contestee, cnpjContestee);
             ChatPostMessageResponse response = slack.methods(token).chatPostMessage(req -> req
-                    .channel("#api")
-                    .text(":wave: hello world"));
+                    .channel("C03KH0F7U3V") //id for #API
+                    .text(payload));
             if (response.isOk()) {
                 Message postedMessage = response.getMessage();
                 System.out.println(postedMessage);
