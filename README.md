@@ -1,2 +1,2 @@
 # text-emitter
-Java bot SDK app experimenting
+Java Slack bot SDK app experimenting
